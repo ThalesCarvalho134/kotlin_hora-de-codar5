@@ -22,6 +22,7 @@ fun main(){
 //Função para nomear o bichinho (é chamada uma única vez quando começa a rodar o código)
 fun nomearBichinho(){
     println("Qual será o nome do seu bichinho?")
+    println("Talvez um nome fofo... ou quem sabe um nome intimidador ;)")
     print("Nome: ")
     nomeBichinho = readln().uppercase()
 
@@ -47,15 +48,12 @@ fun inicio(){
             "1" -> {
                 alimentarBichinho()
             }
-
             "2" -> {
                 brincarBichinho()
             }
-
             "3" -> {
                 descansarBichinho()
             }
-
             "4" -> {
                 verStatusBichinho()
             }
@@ -71,11 +69,11 @@ fun alimentarBichinho(){
     println("Alimentando ${nomeBichinho}...")
     Thread.sleep(2000)//parada de tempo por 2s
 
-    bichinho?.fome -= 15
+    bichinho?.fome -= 20
     passarTempo()
 
     if (rodarInicio) {
-        print("${nomeBichinho} comeu bastante e agora está bem alimentado")
+        println("${nomeBichinho} comeu bastante e agora está bem alimentado")
         println("Novos status: ")
         verStatusBichinho()
     }
@@ -84,15 +82,15 @@ fun alimentarBichinho(){
 
 fun brincarBichinho(){
     println("Você escolheu brincar com o(a) ${nomeBichinho}")
-    println("Brincando ${nomeBichinho}...")
+    println("Brincando com ${nomeBichinho}...")
     Thread.sleep(3000)//parada de tempo por 3s
 
-    bichinho?.felicidade += 10
+    bichinho?.felicidade += 20
     bichinho?.cansaco += 5
     passarTempo()
 
     if (rodarInicio) {
-        print("${nomeBichinho} brincou muito e ficou mega feliz :)")
+        println("${nomeBichinho} brincou muito e ficou mega feliz :)")
         println("Novos status: ")
         verStatusBichinho()
     }
@@ -116,12 +114,12 @@ fun descansarBichinho(){
 }
 
 fun verStatusBichinho(){
-    println("\t\n----STATUS DO PET----")
-    println("\t|Nome do pet: ${bichinho?.nome}")
-    println("\t|Idade do pet: ${bichinho?.idade}")
-    println("\t|Nivel de fome: ${bichinho?.fome}")
-    println("\t|Nivel de felicidade: ${bichinho?.felicidade}")
-    println("\t|Nivel de cansaço: ${bichinho?.cansaco}\n")
+    println("\n----STATUS DO PET----")
+    println("\n|Nome do pet: ${bichinho?.nome}")
+    println("|Idade do pet: ${bichinho?.idade}")
+    println("|Nivel de fome: ${bichinho?.fome}")
+    println("|Nivel de felicidade: ${bichinho?.felicidade}")
+    println("|Nivel de cansaço: ${bichinho?.cansaco}\n")
     }
 
 fun passarTempo(){
@@ -135,6 +133,15 @@ fun passarTempo(){
     bichinho?.fome = bichinho?.fome?.coerceIn(0, 100)?: 0
     bichinho?.felicidade = bichinho?.felicidade?.coerceIn(0, 100)?: 100
     bichinho?.cansaco = bichinho?.cansaco?.coerceIn(0, 100)?: 0
+
+    //Verifica se atingiu a idade limite (50)
+    if (bichinho?.idade == 50){
+        println("Você venceu! ")
+        println("O(A) ${nomeBichinho} chegou a 50 anos de idade e você conseguiu cuidar de dele até aqui")
+        print("Status finais: ")
+        verStatusBichinho()
+        finalizar()
+    }
 
     //Condição caso verificou verdadeiro
     if (bichinho?.fome == 100) {
