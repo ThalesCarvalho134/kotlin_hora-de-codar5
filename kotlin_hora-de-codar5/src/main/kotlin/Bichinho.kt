@@ -136,7 +136,7 @@ fun passarTempo(){
 
     //Verifica se atingiu a idade limite (50)
     if (bichinho?.idade == 50){
-        println("Você venceu! ")
+        println("VOCÊ VENCEU!")
         println("O(A) ${nomeBichinho} chegou a 50 anos de idade e você conseguiu cuidar de dele até aqui")
         print("Status finais: ")
         verStatusBichinho()
@@ -145,14 +145,17 @@ fun passarTempo(){
 
     //Condição caso verificou verdadeiro
     if (bichinho?.fome == 100) {
+        println("SEU MONSTRO!")
         println("${bichinho?.nome} faleceu de fome. Você perdeu")
         finalizar()
     }
     else if (bichinho?.cansaco == 100) {
+        println("DESMAIO!")
         println("${bichinho?.nome} ficou muito cansado. Você perdeu")
         finalizar()
     }
     else if (bichinho?.felicidade == 0) {
+        println("ESQUECEU DE MIM?")
         println("${bichinho?.nome} ficou muito triste. Você perdeu")
         finalizar()
     }
